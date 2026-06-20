@@ -527,6 +527,27 @@ section {
     margin-top: 4rem;
 }
 
+.impact-item {
+    background: linear-gradient(
+        135deg,
+        #5b448e,
+        #43316f
+    );
+
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+
+    font-weight: 600;
+    font-size: 1rem;
+
+    transition: all 0.3s ease;
+}
+
+.impact-item:hover {
+    transform: translateX(8px);
+}
+
 .stat-card {
     background: white;
     padding: 2rem;
@@ -599,8 +620,10 @@ section {
 }
 
 .about-image {
-    width: 768px;
-    height: 576px;
+    width: 100%;
+    max-width: 768px;
+    height: auto;
+    object-fit: cover;
     background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-purple) 100%);
     border-radius: 15px;
     display: flex;
@@ -610,7 +633,11 @@ section {
     font-size: 5rem;
     margin-left: 20px;
 }
-
+@media (min-width: 769px) and (max-width: 1800px) {
+    .about-content {
+        padding-left: 100px;
+    }
+}
 .about-content h3 {
     color: var(--primary-purple);
     font-size: 2.3rem;
@@ -624,7 +651,7 @@ section {
     font-size: 1.3rem;
 }
 
-.highlight-word p {
+.highlight-word {
     color: var(--primary-purple);
     font-weight: 700;
     font-size: 1.05em;
@@ -845,7 +872,7 @@ footer {
     }
 
     .hero h1 {
-        font-size: 4.5rem;
+        font-size: 3.5rem;
     }
 
     .cta-buttons {
