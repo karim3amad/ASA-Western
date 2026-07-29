@@ -425,7 +425,7 @@ section {
 
 /* ==================== CHARITY SECTION ==================== */
 .charity-section {
-    background: linear-gradient(135deg, var(--accent-cream) 0%, #faf8f3 100%);
+    background: white;
 }
 
 .charity-content {
@@ -450,7 +450,7 @@ section {
     color: var(--text-dark);
     margin-bottom: 1.5rem;
     line-height: 1.8;
-    font-size: 1.50rem;
+    font-size: 1.3rem;
 }
 
 .charity-list {
@@ -460,6 +460,11 @@ section {
     margin-top: 2rem;
     font-size: 1.20rem;
 
+}
+
+#charity-title {
+    font-size: 1.5rem;
+    color: var(--primary-purple);
 }
 
 .charity-list li {
@@ -589,7 +594,7 @@ section {
     }
 
     .charity-content h3 {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 
     .charity-list li {
