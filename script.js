@@ -86,6 +86,39 @@ document.querySelectorAll('.event-btn').forEach(btn => {
     });
 });
 
+// Show more button
+const button = document.getElementById("showMoreEvents");
+const moreEvents = document.getElementById("moreEvents");
+const eventsSection = document.getElementById("events");
+
+button.addEventListener("click", () => {
+
+    const isExpanded = moreEvents.classList.contains("show");
+
+    if (isExpanded) {
+
+        // Collapse
+        moreEvents.classList.remove("show");
+        button.textContent = "Show More Events";
+
+        // Wait for the collapse animation to begin, then scroll
+        setTimeout(() => {
+            eventsSection.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }, 100);
+
+    } else {
+
+        // Expand
+        moreEvents.classList.add("show");
+        button.textContent = "Show Less";
+
+    }
+
+});
+
 // ==================== ACTIVE NAV LINK ==================== //
 const navLinksAll = document.querySelectorAll('.nav-links a');
 

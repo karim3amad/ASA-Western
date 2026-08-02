@@ -497,6 +497,7 @@ section {
     background: linear-gradient(135deg, #f9f9f9 0%, #f0f0f0 100%);
 }
 
+.more-events,
 .events-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -570,6 +571,48 @@ section {
 .event-btn:hover {
     background: var(--primary-dark);
     transform: translateX(5px);
+}
+
+/* Hidden events */
+
+/* .more-events {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
+    gap: 2rem;
+
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+
+    transition:
+        max-height 0.6s ease,
+        opacity 0.4s ease,
+        margin-top 0.4s ease;
+
+    margin-top: 0;
+} */
+
+.more-events {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all .5s ease;
+
+}
+
+.more-events.show {
+    max-height: 3000px;   /* Large enough to fit all cards */
+    opacity: 1;
+    margin-top: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+
+}
+
+.events-toggle {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
 }
 
 /* ==================== CHARITY SECTION ==================== */
