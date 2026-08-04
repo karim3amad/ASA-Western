@@ -255,7 +255,7 @@ section {
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
 }
 
@@ -617,6 +617,7 @@ section {
 
 /* ==================== CHARITY SECTION ==================== */
 .charity-section {
+    align-items: center;
     background: white;
 }
 
@@ -626,7 +627,7 @@ section {
 }
 
 .charity-grid {
-     display: grid;
+    display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
@@ -660,11 +661,8 @@ section {
     color: var(--primary-purple);
 }
 
-.charity-list li {
-    background: white;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0,0,0,.05);
+.charity-highlight {
+    color: var(--primary-purple);
 }
 
 .charity-btn {
@@ -781,11 +779,13 @@ section {
 
 }
 
-@media (min-width: 2000px) {
+
+/* 
+@media (max-width: 1800px) {
     .charity-grid {
-        padding: 0 200px;
+        padding: 0 100px;
     }
-}
+} */
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -842,7 +842,7 @@ section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    margin-top: 3rem;
+    padding-top: 3rem;
     gap: 1.5rem;
 }
 
@@ -858,7 +858,6 @@ section {
     justify-content: center;
     color: white;
     font-size: 5rem;
-    margin-left: 20px;
     order: 1
 }
 
@@ -871,7 +870,7 @@ section {
 .about-content h3 {
     color: var(--primary-purple);
     font-size: 2.3rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.4rem;
 }
 
 .about-content p {
@@ -913,19 +912,15 @@ section {
     color: var(--text-dark);
 }
 
-@media (min-width: 769px) and (max-width: 20000px) {
-    .about-grid{
-        margin: 0 200px;
-    }
-    
-    .about-content {
-        padding-left: 100px;
+@media (min-width: 769px) and (max-width: 1500px) {
+    .about-content p {
+        font-size: 1.5rem;
     }
 }
 
 @media (max-width: 1500px) {
     .about-content p {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 
     .about-grid {
@@ -941,13 +936,14 @@ section {
     .about-content h3 {
         order: 1;
         text-align: center;
-        font-size: 1.7rem;
+        font-size: 1.9rem;
+        margin-top: -0px;
     }
 
     .about-image {
         order: 2;
         width: 100%;
-        margin: 0;
+        margin-bottom: 20px;
     }
 
     .about-content p:nth-of-type(1) {
@@ -962,6 +958,31 @@ section {
         order: 5;
     }
 }
+
+@media (min-width: 1200px) and (max-width: 1800px) {
+    .about-content p {
+        font-size: 1.2rem;
+    }
+
+
+}
+
+@media (min-width: 1501px) and (max-width: 1900px) {
+    .about-content {
+        padding-left: 50px;
+    }
+
+
+}
+
+.container {
+    max-width: 1700px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
 
 /* ==================== LEADERSHIP SECTION ==================== */
 .leadership-section {
@@ -1179,7 +1200,7 @@ footer {
     }
 
     .section-title {
-        font-size: 2.5rem;
+        font-size: 3.2rem;
     }
 
     .btn {
@@ -1205,7 +1226,7 @@ footer {
         grid-template-columns: repeat(2, 1fr);
     }
 
-        .features-grid {
+    .features-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
