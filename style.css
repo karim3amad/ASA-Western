@@ -621,13 +621,14 @@ section {
 }
 
 .charity-content {
+    order: 1;
     max-width: 950px;
 }
 
 .charity-grid {
-    display: grid;
-    grid-template-columns: 1fr 0.9fr;
-    gap: 3rem;
+     display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
     align-items: center;
     margin-top: 3rem;
 }
@@ -679,6 +680,7 @@ section {
     border-radius: 15px;
     cursor: pointer;
     transition: var(--transition);
+    order: 2;
 }
 
 .charity-image-link:hover {
@@ -792,6 +794,7 @@ section {
     .charity-list li {
         font-size: 0.9rem;
     }
+
 }
 
 @media (max-width: 480px) {
