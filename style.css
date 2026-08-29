@@ -831,6 +831,475 @@ section {
     }
 }
 
+
+
+/* ==================== GALLERY SECTION ==================== */
+
+.gallery-section {
+    padding: 100px 0;
+    background-color: var(--primary-purple);
+    overflow: hidden;
+}
+
+/* ==================== GALLERY HEADING ==================== */
+
+.gallery-section .section-title {
+    color: white;
+    margin-bottom: 15px;
+}
+
+.gallery-section .section-subtitle {
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 60px;
+}
+
+/* If your section titles have an underline */
+.gallery-section .section-title::after {
+    background-color: var(--accent-gold);
+}
+
+
+/* ==================== GALLERY WRAPPER ==================== */
+
+.gallery-wrapper {
+    position: relative;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 75px;
+}
+
+
+/* ==================== GALLERY VIEWPORT ==================== */
+
+.gallery-viewport {
+    width: 100%;
+    overflow: hidden;
+}
+
+
+/* ==================== GALLERY TRACK ==================== */
+
+.gallery-track {
+    display: flex;
+    gap: 25px;
+    padding: 8px 0 20px;
+    transition: transform 0.5s ease;
+    will-change: transform;
+}
+
+
+/* ==================== GALLERY IMAGES ==================== */
+
+.gallery-item {
+    flex: 0 0 calc((100% - 50px) / 3);
+    aspect-ratio: 4 / 3;
+
+    border-radius: 16px;
+    overflow: hidden;
+
+    background: white;
+
+    padding: 8px;
+
+    cursor: pointer;
+
+    box-shadow: 0 14px 18px -12px rgba(0, 0, 0, 0.55);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    border-radius: 10px;
+
+    transition: transform 0.4s ease;
+}
+
+
+/* ==================== IMAGE HOVER ==================== */
+
+@media (hover: hover) and (pointer: fine) {
+
+    .gallery-item:hover {
+        transform: translateY(-6px);
+
+        box-shadow: 0 20px 22px -14px rgba(0, 0, 0, 0.65);
+    }
+
+    .gallery-item:hover img {
+        transform: scale(1.03);
+    }
+
+}
+
+
+/* ==================== GALLERY ARROWS ==================== */
+
+.gallery-arrow {
+    position: absolute;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 52px;
+    height: 52px;
+
+    border: 2px solid rgba(255, 255, 255, 0.25);
+
+    border-radius: 50%;
+
+    background-color: rgba(255, 255, 255, 0.12);
+
+    color: white;
+
+    font-size: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    z-index: 5;
+
+    backdrop-filter: blur(8px);
+
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.gallery-arrow:hover {
+    background-color: var(--accent-gold);
+
+    border-color: var(--accent-gold);
+
+    color: var(--primary-purple);
+
+    transform: translateY(-50%) scale(1.08);
+}
+
+.gallery-arrow:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.gallery-prev {
+    left: 5px;
+}
+
+.gallery-next {
+    right: 5px;
+}
+
+
+/* ==================== GALLERY DOTS ==================== */
+
+.gallery-dots {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 9px;
+
+    margin-top: 30px;
+}
+
+.gallery-dot {
+    width: 9px;
+    height: 9px;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background-color: rgba(255, 255, 255, 0.35);
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.gallery-dot:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.gallery-dot.active {
+    background-color: var(--accent-gold);
+
+    transform: scale(1.35);
+}
+
+
+/* ==================== LIGHTBOX ==================== */
+
+.gallery-lightbox {
+    position: fixed;
+
+    inset: 0;
+
+    background-color: rgba(10, 8, 30, 0.95);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 9999;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+.gallery-lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.gallery-lightbox img {
+    max-width: 85vw;
+    max-height: 85vh;
+
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+
+/* ==================== LIGHTBOX CLOSE ==================== */
+
+.lightbox-close {
+    position: absolute;
+
+    top: 25px;
+    right: 35px;
+
+    width: 50px;
+    height: 50px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background-color: rgba(255, 255, 255, 0.12);
+
+    color: white;
+
+    font-size: 38px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.lightbox-close:hover {
+    background-color: var(--accent-gold);
+
+    color: var(--primary-purple);
+
+    transform: scale(1.08);
+}
+
+
+/* ==================== LIGHTBOX ARROWS ==================== */
+
+.lightbox-arrow {
+    position: absolute;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 58px;
+    height: 58px;
+
+    border: 2px solid rgba(255, 255, 255, 0.2);
+
+    border-radius: 50%;
+
+    background-color: rgba(255, 255, 255, 0.12);
+
+    color: white;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.lightbox-arrow:hover {
+    background-color: var(--accent-gold);
+
+    border-color: var(--accent-gold);
+
+    color: var(--primary-purple);
+
+    transform: translateY(-50%) scale(1.08);
+}
+
+.lightbox-prev {
+    left: 30px;
+}
+
+.lightbox-next {
+    right: 30px;
+}
+
+
+/* ==================== TABLET ==================== */
+
+@media (max-width: 1000px) {
+
+    .gallery-section {
+        padding: 85px 0;
+    }
+
+    .gallery-wrapper {
+        padding: 0 65px;
+    }
+
+    .gallery-item {
+        flex: 0 0 calc((100% - 25px) / 2);
+    }
+
+}
+
+
+/* ==================== MOBILE ==================== */
+
+@media (max-width: 768px) {
+
+    .gallery-section {
+        padding: 75px 0;
+    }
+
+    .gallery-section .section-subtitle {
+        margin-bottom: 40px;
+        padding: 0 20px;
+    }
+
+    .gallery-wrapper {
+        padding: 0 50px;
+    }
+
+    .gallery-track {
+        gap: 15px;
+    }
+
+    .gallery-item {
+        flex: 0 0 100%;
+
+        aspect-ratio: 4 / 3;
+
+        border-radius: 14px;
+    }
+
+    .gallery-arrow {
+        width: 42px;
+        height: 42px;
+
+        font-size: 19px;
+    }
+
+    .gallery-prev {
+        left: 4px;
+    }
+
+    .gallery-next {
+        right: 4px;
+    }
+
+    .gallery-dots {
+        margin-top: 22px;
+    }
+
+    .lightbox-close {
+        top: 15px;
+        right: 20px;
+
+        width: 45px;
+        height: 45px;
+
+        font-size: 32px;
+    }
+
+    .lightbox-arrow {
+        width: 44px;
+        height: 44px;
+
+        font-size: 19px;
+    }
+
+    .lightbox-prev {
+        left: 10px;
+    }
+
+    .lightbox-next {
+        right: 10px;
+    }
+
+}
+
+
+/* ==================== SMALL PHONES ==================== */
+
+@media (max-width: 450px) {
+
+    .gallery-wrapper {
+        padding: 0 45px;
+    }
+
+    .gallery-item {
+        aspect-ratio: 1 / 1;
+
+        border-radius: 12px;
+    }
+
+}
+
+
+
+
+
 /* ==================== ABOUT SECTION ==================== */
 .about-section {
     background: white;
