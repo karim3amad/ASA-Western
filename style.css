@@ -158,7 +158,7 @@ nav {
 }
 
 .hero p {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     margin-bottom: 3rem;
     color: var(--accent-cream);
     line-height: 1.8;
@@ -496,6 +496,7 @@ section {
 .events-section {
     background: linear-gradient(135deg, #f9f9f9 0%, #f0f0f0 100%);
 }
+    
 
 .more-events,
 .events-container {
@@ -503,6 +504,8 @@ section {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2.5rem;
     margin-top: 3rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 .event-card {
@@ -613,6 +616,20 @@ section {
     display: flex;
     justify-content: center;
     margin-top: 3rem;
+}
+
+@media (min-width: 1000px) {
+    .events-container {
+        margin-left: 3rem;
+        margin-right: 3rem;
+    }
+}
+
+@media (min-width: 1100px) {
+    .events-container {
+        margin-left: 5rem;
+        margin-right: 5rem;
+    }
 }
 
 /* ==================== CHARITY SECTION ==================== */
@@ -836,26 +853,85 @@ section {
 /* ==================== GALLERY SECTION ==================== */
 
 .gallery-section {
-    padding: 100px 0;
-    background-color: var(--primary-purple);
+    position: relative;
+
+
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(107, 76, 154, 0.08),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(212, 165, 116, 0.10),
+            transparent 30%
+        ),
+        #faf9f7;
+
     overflow: hidden;
 }
 
-/* ==================== GALLERY HEADING ==================== */
+
+/* ==================== DECORATIVE BACKGROUND ==================== */
+
+.gallery-section::before {
+    content: '';
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    top: -150px;
+    left: -150px;
+
+    border: 1px solid rgba(107, 76, 154, 0.12);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.gallery-section::after {
+    content: '';
+
+    position: absolute;
+
+    width: 400px;
+    height: 400px;
+
+    bottom: -250px;
+    right: -200px;
+
+    border: 1px solid rgba(212, 165, 116, 0.15);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+/* ==================== HEADING ==================== */
 
 .gallery-section .section-title {
-    color: white;
+    position: relative;
+
+    color: var(--primary-dark);
+
     margin-bottom: 15px;
+
+    z-index: 2;
 }
 
 .gallery-section .section-subtitle {
-    color: rgba(255, 255, 255, 0.85);
-    margin-bottom: 60px;
-}
+    position: relative;
 
-/* If your section titles have an underline */
-.gallery-section .section-title::after {
-    background-color: var(--accent-gold);
+    color: var(--primary-purple);
+
+    margin-bottom: 65px;
+
+    z-index: 2;
 }
 
 
@@ -863,85 +939,108 @@ section {
 
 .gallery-wrapper {
     position: relative;
+
     max-width: 1500px;
+
     margin: 0 auto;
+
     padding: 0 75px;
+
+    z-index: 2;
 }
 
 
-/* ==================== GALLERY VIEWPORT ==================== */
+/* ==================== VIEWPORT ==================== */
 
 .gallery-viewport {
     width: 100%;
+
     overflow: hidden;
+
+    padding: 15px 5px 30px;
 }
 
 
-/* ==================== GALLERY TRACK ==================== */
+/* ==================== TRACK ==================== */
 
 .gallery-track {
     display: flex;
-    gap: 25px;
-    padding: 8px 0 20px;
+
+    gap: 28px;
+
     transition: transform 0.5s ease;
+
     will-change: transform;
 }
 
 
-/* ==================== GALLERY IMAGES ==================== */
+/* ==================== PHOTO CARDS ==================== */
 
 .gallery-item {
-    flex: 0 0 calc((100% - 50px) / 3);
+    position: relative;
+
+    flex: 0 0 calc((100% - 56px) / 3);
+
     aspect-ratio: 4 / 3;
 
-    border-radius: 16px;
-    overflow: hidden;
+    background: #ffffff;
 
-    background: white;
+    padding: 9px;
 
-    padding: 8px;
+    border-radius: 10px;
 
     cursor: pointer;
 
-    box-shadow: 0 14px 18px -12px rgba(0, 0, 0, 0.55);
+    /* box-shadow:
+        0 12px 25px rgba(26, 26, 62, 0.10),
+        0 3px 8px rgba(26, 26, 62, 0.06); */
 
     transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
 }
+
+
+
+
+/* ==================== IMAGES ==================== */
 
 .gallery-item img {
     width: 100%;
     height: 100%;
 
-    object-fit: cover;
-
     display: block;
 
-    border-radius: 10px;
+    object-fit: cover;
 
-    transition: transform 0.4s ease;
+    border-radius: 14px;
+
+    transition:
+        transform 0.5s ease,
+        filter 0.5s ease;
 }
 
 
-/* ==================== IMAGE HOVER ==================== */
+/* ==================== HOVER ==================== */
 
 @media (hover: hover) and (pointer: fine) {
 
     .gallery-item:hover {
-        transform: translateY(-6px);
+        transform: translateY(-8px) rotate(-0.5deg);
 
-        box-shadow: 0 20px 22px -14px rgba(0, 0, 0, 0.65);
+        box-shadow:
+            0 20px 35px rgba(26, 26, 62, 0.16),
+            0 5px 12px rgba(26, 26, 62, 0.08);
     }
 
     .gallery-item:hover img {
-        transform: scale(1.03);
+        transform: scale(1.04);
     }
 
 }
 
 
-/* ==================== GALLERY ARROWS ==================== */
+/* ==================== ARROWS ==================== */
 
 .gallery-arrow {
     position: absolute;
@@ -953,17 +1052,18 @@ section {
     width: 52px;
     height: 52px;
 
-    border: 2px solid rgba(255, 255, 255, 0.25);
+    border: none;
 
     border-radius: 50%;
 
-    background-color: rgba(255, 255, 255, 0.12);
+    background: var(--primary-purple);
 
     color: white;
 
     font-size: 24px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -971,22 +1071,25 @@ section {
 
     z-index: 5;
 
-    backdrop-filter: blur(8px);
+    box-shadow:
+        0 6px 15px rgba(26, 26, 62, 0.18);
 
     transition:
         background-color 0.3s ease,
-        border-color 0.3s ease,
-        transform 0.3s ease;
+        color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .gallery-arrow:hover {
-    background-color: var(--accent-gold);
+    background: var(--accent-gold);
 
-    border-color: var(--accent-gold);
-
-    color: var(--primary-purple);
+    color: var(--primary-dark);
 
     transform: translateY(-50%) scale(1.08);
+
+    box-shadow:
+        0 8px 18px rgba(26, 26, 62, 0.20);
 }
 
 .gallery-arrow:active {
@@ -1002,7 +1105,7 @@ section {
 }
 
 
-/* ==================== GALLERY DOTS ==================== */
+/* ==================== DOTS ==================== */
 
 .gallery-dots {
     display: flex;
@@ -1012,7 +1115,11 @@ section {
 
     gap: 9px;
 
-    margin-top: 30px;
+    margin-top: 20px;
+
+    position: relative;
+
+    z-index: 2;
 }
 
 .gallery-dot {
@@ -1025,112 +1132,29 @@ section {
 
     border-radius: 50%;
 
-    background-color: rgba(255, 255, 255, 0.35);
+    background: rgba(107, 76, 154, 0.25);
 
     cursor: pointer;
 
     transition:
-        background-color 0.3s ease,
-        transform 0.3s ease;
+        transform 0.3s ease,
+        background-color 0.3s ease;
 }
 
 .gallery-dot:hover {
-    background-color: rgba(255, 255, 255, 0.7);
+    background: rgba(107, 76, 154, 0.55);
 }
 
 .gallery-dot.active {
-    background-color: var(--accent-gold);
+    width: 11px;
+    height: 11px;
 
-    transform: scale(1.35);
+    background: var(--accent-gold);
+
+    transform: scale(1.15);
 }
 
 
-/* ==================== LIGHTBOX ==================== */
-
-.gallery-lightbox {
-    position: fixed;
-
-    inset: 0;
-
-    background-color: rgba(10, 8, 30, 0.95);
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    z-index: 9999;
-
-    opacity: 0;
-    visibility: hidden;
-
-    transition:
-        opacity 0.3s ease,
-        visibility 0.3s ease;
-}
-
-.gallery-lightbox.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.gallery-lightbox img {
-    max-width: 85vw;
-    max-height: 85vh;
-
-    width: auto;
-    height: auto;
-
-    object-fit: contain;
-
-    border-radius: 12px;
-
-    box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.5);
-}
-
-
-/* ==================== LIGHTBOX CLOSE ==================== */
-
-.lightbox-close {
-    position: absolute;
-
-    top: 25px;
-    right: 35px;
-
-    width: 50px;
-    height: 50px;
-
-    border: none;
-
-    border-radius: 50%;
-
-    background-color: rgba(255, 255, 255, 0.12);
-
-    color: white;
-
-    font-size: 38px;
-
-    line-height: 1;
-
-    cursor: pointer;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    transition:
-        background-color 0.3s ease,
-        transform 0.3s ease;
-}
-
-.lightbox-close:hover {
-    background-color: var(--accent-gold);
-
-    color: var(--primary-purple);
-
-    transform: scale(1.08);
-}
 
 
 /* ==================== LIGHTBOX ARROWS ==================== */
@@ -1145,11 +1169,11 @@ section {
     width: 58px;
     height: 58px;
 
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    border: none;
 
     border-radius: 50%;
 
-    background-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.12);
 
     color: white;
 
@@ -1158,6 +1182,7 @@ section {
     cursor: pointer;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -1167,11 +1192,9 @@ section {
 }
 
 .lightbox-arrow:hover {
-    background-color: var(--accent-gold);
+    background: var(--accent-gold);
 
-    border-color: var(--accent-gold);
-
-    color: var(--primary-purple);
+    color: var(--primary-dark);
 
     transform: translateY(-50%) scale(1.08);
 }
@@ -1190,7 +1213,7 @@ section {
 @media (max-width: 1000px) {
 
     .gallery-section {
-        padding: 85px 0;
+        padding: 90px 0 85px;
     }
 
     .gallery-wrapper {
@@ -1198,7 +1221,7 @@ section {
     }
 
     .gallery-item {
-        flex: 0 0 calc((100% - 25px) / 2);
+        flex: 0 0 calc((100% - 28px) / 2);
     }
 
 }
@@ -1209,16 +1232,21 @@ section {
 @media (max-width: 768px) {
 
     .gallery-section {
-        padding: 75px 0;
+        padding: 75px 0 70px;
     }
 
     .gallery-section .section-subtitle {
-        margin-bottom: 40px;
         padding: 0 20px;
+
+        margin-bottom: 45px;
     }
 
     .gallery-wrapper {
-        padding: 0 50px;
+        padding: 0 48px;
+    }
+
+    .gallery-viewport {
+        padding: 10px 5px 25px;
     }
 
     .gallery-track {
@@ -1230,7 +1258,22 @@ section {
 
         aspect-ratio: 4 / 3;
 
-        border-radius: 14px;
+        padding: 7px;
+
+        border-radius: 16px;
+    }
+
+    .gallery-item img {
+        border-radius: 11px;
+    }
+
+    .gallery-item::after {
+        left: 15px;
+        right: 15px;
+
+        bottom: -6px;
+
+        height: 6px;
     }
 
     .gallery-arrow {
@@ -1241,23 +1284,23 @@ section {
     }
 
     .gallery-prev {
-        left: 4px;
+        left: 3px;
     }
 
     .gallery-next {
-        right: 4px;
+        right: 3px;
     }
 
     .gallery-dots {
-        margin-top: 22px;
+        margin-top: 15px;
     }
 
     .lightbox-close {
         top: 15px;
-        right: 20px;
+        right: 18px;
 
-        width: 45px;
-        height: 45px;
+        width: 44px;
+        height: 44px;
 
         font-size: 32px;
     }
@@ -1285,18 +1328,22 @@ section {
 @media (max-width: 450px) {
 
     .gallery-wrapper {
-        padding: 0 45px;
+        padding: 0 43px;
     }
 
     .gallery-item {
         aspect-ratio: 1 / 1;
 
-        border-radius: 12px;
+        padding: 6px;
+
+        border-radius: 14px;
+    }
+
+    .gallery-item img {
+        border-radius: 9px;
     }
 
 }
-
-
 
 
 
@@ -1644,7 +1691,7 @@ footer {
     }
 
     .hero h1 {
-        font-size: 3.5rem;
+        font-size: 3.0rem;
     }
 
     .cta-buttons {
@@ -1669,7 +1716,7 @@ footer {
     }
 
     .section-title {
-        font-size: 3.2rem;
+        font-size: 2.6rem;
     }
 
     .btn {
@@ -1725,7 +1772,37 @@ footer {
     }
 }
 
-@media (max-width: 480px) {
+
+@media (max-width: 425px) {
+
+    .team-grid {
+        grid-template-columns: 1;
+        gap: 1.2rem;
+    }
+
+    .team-card {
+        min-height: 180px;
+        padding: 2rem 1.5rem;
+        grid-template-columns: 1;
+
+    }
+
+    .team-icon {
+        font-size: 2.5rem;
+        margin-bottom: 0.7rem;
+    }
+
+    .team-card h4 {
+        margin-bottom: 0.4rem;
+    }
+
+    .team-card p {
+        font-size: 0.9rem;
+    }
+}
+
+
+/* @media (max-width: 480px) {
 
     .feature-card,
     .event-card {
@@ -1741,5 +1818,5 @@ footer {
 
     .cta-buttons-footer {
         flex-direction: column;
-    }
-}
+    } */
+/* } */
