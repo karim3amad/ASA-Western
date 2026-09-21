@@ -1520,16 +1520,40 @@ section {
 }
 
 .team-card {
-    background: var(--accent-cream);
+    position: relative;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    color: white;
+
     padding: 3.5rem 2rem;
     border-radius: 12px;
+
     text-align: center;
+
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+
     transition: var(--transition);
+
     min-height: 280px;
+
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
+
+    overflow: hidden;
+}
+
+.team-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: rgba(26, 26, 62, 0.35);
+
+    z-index: 0;
 }
 
 
@@ -1538,20 +1562,86 @@ section {
     box-shadow: 0 10px 30px rgba(107, 76, 154, 0.15);
 }
 
-.team-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+
+
+.team-card h4,
+.team-card p {
+    position: relative;
+    z-index: 1;
 }
 
 .team-card h4 {
-    color: var(--primary-dark);
+    color: white;
     margin-bottom: 0.5rem;
 }
 
 .team-card p {
-    color: var(--text-dark);
+    color: white;
     font-size: 0.95rem;
 }
+
+.team-president {
+    background-image: url("images/execs/ramadan.jpg");
+    background-position: center 25%;
+
+}
+
+.team-vice-president {
+    background-image: url("images/execs/karim.png");
+    background-position: center 25%;
+}
+
+.team-jad {
+    background-image: url("images/execs/jad.JPG");
+    background-position: 54% 50%;
+    background-size: 140%;
+    background-size: cover;
+}
+
+.team-lana {
+    background-image: url("images/execs/lana.jpg");
+    background-size: 180%;
+    background-size: cover;
+}
+
+.team-shelkani {
+    background-image: url("images/execs/shelkani.jpg");
+    background-position: 0% 65%;
+    background-size: 140%;
+}
+
+.team-maha {
+    background-image: url("images/execs/maha.jpg");
+}
+
+.team-sam {
+    background-image: url("images/execs/sam.jpg");
+    background-position: 36% 50%;
+}
+
+.team-rami {
+    background-image: url("images/execs/rami.jpg");
+}
+
+.team-janna {
+    background-image: url("images/execs/jana.jpg");
+    background-position: 70% 20%;
+    background-size: 125%;
+}
+
+.team-khalid {
+    background-image: url("images/execs/khalid.jpg");
+    background-size: 150%;
+    background-position: 20% 50%;
+}
+
+/* @media (max-width: 426px) {
+    .team-jad {
+        background-size: cover;
+    }
+
+} */
+
 
 /* ==================== CTA SECTION ==================== */
 .cta-section {
@@ -1781,23 +1871,21 @@ footer {
     }
 
     .team-card {
-        min-height: 180px;
+        min-height: 230px;
         padding: 2rem 1.5rem;
         grid-template-columns: 1;
 
     }
 
-    .team-icon {
-        font-size: 2.5rem;
-        margin-bottom: 0.7rem;
-    }
 
     .team-card h4 {
         margin-bottom: 0.4rem;
+        font-size: 0.8rem;
+
     }
 
     .team-card p {
-        font-size: 0.9rem;
+        font-size: 0.7rem;
     }
 }
 
