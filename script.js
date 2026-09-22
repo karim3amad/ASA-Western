@@ -73,338 +73,89 @@ buttons.forEach(button => {
     });
 });
 
+// ==================== GALLERY LIGHTBOX ==================== //
 
-/* ==================== GALLERY ==================== */
+const asaLightboxItems = document.querySelectorAll('.gallery-item');
+const asaLightbox = document.getElementById('galleryLightbox');
+const asaLightboxImage = document.getElementById('lightboxImage');
+const asaLightboxClose = document.getElementById('lightboxClose');
 
-const galleryTrack = document.getElementById("galleryTrack");
-const galleryItems = document.querySelectorAll(".gallery-item");
-const galleryPrev = document.getElementById("galleryPrev");
-const galleryNext = document.getElementById("galleryNext");
-const galleryDots = document.getElementById("galleryDots");
+if (asaLightbox && asaLightboxImage && asaLightboxClose) {
 
-const lightbox = document.getElementById("galleryLightbox");
-const lightboxImage = document.getElementById("lightboxImage");
-const lightboxClose = document.getElementById("lightboxClose");
-const lightboxPrev = document.getElementById("lightboxPrev");
-const lightboxNext = document.getElementById("lightboxNext");
+    // Open lightbox
+    asaLightboxItems.forEach(item => {
 
-let currentSlide = 0;
-let itemsPerView = 3;
+        const image = item.querySelector('img');
 
+        if (!image) return;
 
-/* Determine how many photos are visible */
+        item.addEventListener('click', (event) => {
 
-function updateItemsPerView() {
+            // Prevent any other click behavior
+            event.preventDefault();
+            event.stopPropagation();
 
-    if (window.innerWidth <= 768) {
-        itemsPerView = 1;
-    } else if (window.innerWidth <= 1000) {
-        itemsPerView = 2;
-    } else {
-        itemsPerView = 3;
-    }
+            asaLightboxImage.src = image.src;
+            asaLightboxImage.alt = image.alt;
 
-}
+            asaLightbox.classList.add('active');
 
-
-/* Create dots */
-
-function createDots() {
-
-    galleryDots.innerHTML = "";
-
-    const totalSlides = Math.ceil(
-        galleryItems.length / itemsPerView
-    );
-
-    for (let i = 0; i < totalSlides; i++) {
-
-        const dot = document.createElement("button");
-
-        dot.classList.add("gallery-dot");
-
-        if (i === currentSlide) {
-            dot.classList.add("active");
-        }
-
-        dot.addEventListener("click", () => {
-
-            currentSlide = i;
-
-            updateGallery();
+            // Lock the page and pause the gallery
+            document.body.classList.add('lightbox-open');
+            document.body.style.overflow = 'hidden';
 
         });
 
-        galleryDots.appendChild(dot);
+    });
+
+
+    // Close lightbox function
+    function closeAsaLightbox() {
+
+        asaLightbox.classList.remove('active');
+
+        document.body.classList.remove('lightbox-open');
+        document.body.style.overflow = '';
+
+        // Clear image after closing
+        setTimeout(() => {
+            asaLightboxImage.src = '';
+        }, 300);
 
     }
 
-}
+
+    // Close button
+    asaLightboxClose.addEventListener('click', (event) => {
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        closeAsaLightbox();
+
+    });
 
 
-/* Move gallery */
+    // Close when clicking the dark background
+    asaLightbox.addEventListener('click', (event) => {
 
-function updateGallery() {
+        if (event.target === asaLightbox) {
+            closeAsaLightbox();
+        }
 
-    updateItemsPerView();
-
-    const gap = window.innerWidth <= 768 ? 15 : 25;
-
-    const itemWidth =
-        galleryItems[0].getBoundingClientRect().width;
-
-    const movement =
-        currentSlide *
-        (itemWidth + gap) *
-        itemsPerView;
-
-    galleryTrack.style.transform =
-        `translateX(-${movement}px)`;
+    });
 
 
-    /* Update dots */
+    // Escape key
+    document.addEventListener('keydown', (event) => {
 
-    const dots =
-        document.querySelectorAll(".gallery-dot");
-
-    dots.forEach((dot, index) => {
-
-        dot.classList.toggle(
-            "active",
-            index === currentSlide
-        );
+        if (event.key === 'Escape' && asaLightbox.classList.contains('active')) {
+            closeAsaLightbox();
+        }
 
     });
 
 }
-
-
-/* Next */
-
-galleryNext.addEventListener("click", () => {
-
-    const maxSlide =
-        Math.ceil(galleryItems.length / itemsPerView) - 1;
-
-    if (currentSlide < maxSlide) {
-
-        currentSlide++;
-
-    } else {
-
-        currentSlide = 0;
-
-    }
-
-    updateGallery();
-
-});
-
-
-/* Previous */
-
-galleryPrev.addEventListener("click", () => {
-
-    const maxSlide =
-        Math.ceil(galleryItems.length / itemsPerView) - 1;
-
-    if (currentSlide > 0) {
-
-        currentSlide--;
-
-    } else {
-
-        currentSlide = maxSlide;
-
-    }
-
-    updateGallery();
-
-});
-
-
-/* ==================== LIGHTBOX ==================== */
-
-let lightboxIndex = 0;
-
-
-/* Open image */
-
-galleryItems.forEach((item, index) => {
-
-    item.addEventListener("click", () => {
-
-        lightboxIndex = index;
-
-        openLightbox();
-
-    });
-
-});
-
-
-function openLightbox() {
-
-    const image =
-        galleryItems[lightboxIndex].querySelector("img");
-
-    lightboxImage.src = image.src;
-    lightboxImage.alt = image.alt;
-
-    lightbox.classList.add("active");
-
-    document.body.style.overflow = "hidden";
-
-}
-
-
-/* Close */
-
-function closeLightbox() {
-
-    lightbox.classList.remove("active");
-
-    document.body.style.overflow = "";
-
-}
-
-lightboxClose.addEventListener(
-    "click",
-    closeLightbox
-);
-
-
-/* Lightbox next */
-
-lightboxNext.addEventListener("click", () => {
-
-    lightboxIndex++;
-
-    if (lightboxIndex >= galleryItems.length) {
-        lightboxIndex = 0;
-    }
-
-    openLightbox();
-
-});
-
-
-/* Lightbox previous */
-
-lightboxPrev.addEventListener("click", () => {
-
-    lightboxIndex--;
-
-    if (lightboxIndex < 0) {
-        lightboxIndex = galleryItems.length - 1;
-    }
-
-    openLightbox();
-
-});
-
-
-/* Close when clicking background */
-
-lightbox.addEventListener("click", (event) => {
-
-    if (event.target === lightbox) {
-        closeLightbox();
-    }
-
-});
-
-
-/* Keyboard controls */
-
-document.addEventListener("keydown", (event) => {
-
-    if (!lightbox.classList.contains("active")) {
-        return;
-    }
-
-    if (event.key === "Escape") {
-        closeLightbox();
-    }
-
-    if (event.key === "ArrowRight") {
-        lightboxNext.click();
-    }
-
-    if (event.key === "ArrowLeft") {
-        lightboxPrev.click();
-    }
-
-});
-
-
-/* ==================== SWIPE SUPPORT ==================== */
-
-let touchStartX = 0;
-let touchEndX = 0;
-
-galleryTrack.addEventListener("touchstart", (event) => {
-
-    touchStartX = event.changedTouches[0].screenX;
-
-});
-
-
-galleryTrack.addEventListener("touchend", (event) => {
-
-    touchEndX = event.changedTouches[0].screenX;
-
-    const difference =
-        touchStartX - touchEndX;
-
-    if (Math.abs(difference) < 50) {
-        return;
-    }
-
-    if (difference > 0) {
-
-        galleryNext.click();
-
-    } else {
-
-        galleryPrev.click();
-
-    }
-
-});
-
-
-/* ==================== INITIALIZE ==================== */
-
-updateItemsPerView();
-
-createDots();
-
-updateGallery();
-
-
-/* Update when window changes size */
-
-window.addEventListener("resize", () => {
-
-    const previousItemsPerView = itemsPerView;
-
-    updateItemsPerView();
-
-    if (previousItemsPerView !== itemsPerView) {
-
-        currentSlide = 0;
-
-        createDots();
-
-    }
-
-    updateGallery();
-
-});
-
-
-
 
 
 
@@ -421,38 +172,7 @@ document.querySelectorAll('.event-btn').forEach(btn => {
     });
 });
 
-// Show more button
-const button = document.getElementById("showMoreEvents");
-const moreEvents = document.getElementById("moreEvents");
-const eventsSection = document.getElementById("events");
 
-button.addEventListener("click", () => {
-
-    const isExpanded = moreEvents.classList.contains("show");
-
-    if (isExpanded) {
-
-        // Collapse
-        moreEvents.classList.remove("show");
-        button.textContent = "Show More Events";
-
-        // Wait for the collapse animation to begin, then scroll
-        setTimeout(() => {
-            eventsSection.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-        }, 100);
-
-    } else {
-
-        // Expand
-        moreEvents.classList.add("show");
-        button.textContent = "Show Less";
-
-    }
-
-});
 
 // ==================== ACTIVE NAV LINK ==================== //
 const navLinksAll = document.querySelectorAll('.nav-links a');
@@ -597,3 +317,4 @@ document.head.appendChild(style2);
 
 // ==================== INITIALIZATION ==================== //
 console.log('ASA Website loaded successfully!');
+

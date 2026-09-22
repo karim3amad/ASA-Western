@@ -18,7 +18,7 @@
         </a>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#sponsors">Sponsors</a></li>
+            <!-- <li><a href="#sponsors">Sponsors</a></li> -->
             <li><a href="#events">Events</a></li>
             <li><a href="#charity">Charity</a></li>
             <li><a href="#about">About Us</a></li>
@@ -33,7 +33,7 @@
             <p class="subtitle">Western University</p>
             <p>Celebrating diversity, culture, and community. Join us in exploring the rich heritage of Arab cultures while building lasting connections.</p>
             <div class="cta-buttons">
-                <button class="btn btn-primary">Join Us</button>
+                <button class="btn btn-primary" onclick="window.open('https://campus.hellorubric.com/?tab=memberships&s=15993', '_blank')">Join Now</button>
                 <!-- <button class="btn btn-secondary">Learn More</button> -->
             </div>
         </div>
@@ -131,15 +131,14 @@
 
         <div class="events-container">
 
-            <div class="event-card">
+            <!-- <div class="event-card">
                 <div class="event-image"></div>
                 <div class="event-content">
                     <span class="event-date">September 18, 2026</span>
                     <h3>Annual BBQ</h3>
                     <p>Kick off the year with great food, games, and a chance to meet new friends.</p>
-                    <button class="event-btn">Learn More</button>
                 </div>
-            </div>
+            </div> -->
 
             <div class="event-card">
                 <div class="event-image"></div>
@@ -147,7 +146,6 @@
                     <span class="event-date">September 24, 2026</span>
                     <h3>ASA Annual AGM</h3>
                     <p>Meet the executive team, review the year, and help shape ASA's future.</p>
-                    <button class="event-btn">Learn More</button>
                 </div>
             </div>
 
@@ -157,23 +155,21 @@
                     <span class="event-date">September 27, 2026</span>
                     <h3>World Cup Soccer Tournament</h3>
                     <p>Compete, cheer on your friends, and enjoy a day of community and sports.</p>
-                    <button class="event-btn">Learn More</button>
                 </div>
             </div>
 
-            <!-- <div class="event-card">
+            <div class="event-card">
                 <div class="event-image"></div>
                 <div class="event-content">
                     <span class="event-date">October 28, 2026</span>
                     <h3>ASA Games Night</h3>
-                    <p>Enjoy friendly competition with games, cards, and Tarneeb all night long.</p>
-                    <button class="event-btn">Learn More</button>
+                    <p>Enjoy friendly competition with fun games, cards, and Tarneeb all night long.</p>
                 </div>
             </div>
 
         </div>
 
-
+        <!--
         <div class="more-events" id="moreEvents">
 
 
@@ -270,6 +266,89 @@
         
     </section>
 
+    
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
+
+        <!-- <h2 class="section-title">Our Gallery</h2>
+
+        <p class="section-subtitle">
+            A look back at the memories we've created together.
+        </p> -->
+
+        <div class="gallery-marquee">
+
+            <div class="gallery-track">
+
+                <!-- FIRST SET -->
+                <div class="gallery-group">
+
+                    <div class="gallery-item">
+                        <img src="images/gala.jpg" alt="ASA Gala">
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="images/community.jpg" alt="ASA Community Event">
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="images/charity.jpeg" alt="ASA Charity Event">
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="images/global.JPG" alt="ASA Event">
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="images/about-image.JPG" alt="ASA Team">
+                    </div>
+
+                </div>
+
+
+                <!-- DUPLICATE SET -->
+                <div class="gallery-group" aria-hidden="true">
+
+                    <div class="gallery-item">
+                        <img src="images/gala.jpg" alt="">
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="images/community.jpg" alt="">
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="images/charity.jpeg" alt="">
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="images/global.JPG" alt="">
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="images/about-image.JPG" alt="">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Gallery Lightbox -->
+    <div class="gallery-lightbox" id="galleryLightbox">
+
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close">
+            &times;
+        </button>
+
+        <img id="lightboxImage" src="" alt="">
+
+    </div>
+
+
     <!-- Charity Section -->
     <section class="charity-section" id="charity">
         <div class="container">
@@ -322,134 +401,6 @@
             </div>
         </div> -->
     </section>
-
-
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery-section">
-
-        <div class="gallery-wrapper">
-
-            <button class="gallery-arrow gallery-prev" id="galleryPrev" aria-label="Previous photos">
-                &#10094;
-            </button>
-
-            <div class="gallery-viewport">
-                <div class="gallery-track" id="galleryTrack">
-
-                    <!-- Photo 1 -->
-                    <div class="gallery-item">
-                        <img
-                            src="/images/gala.jpg"
-                            alt="ASA Annual BBQ"
-                            loading="lazy"
-                        >
-                    </div>
-
-                    <!-- Photo 2 -->
-                    <div class="gallery-item">
-                        <img
-                            src="YOUR_CLOUDINARY_URL_HERE"
-                            alt="ASA Event"
-                            loading="lazy"
-                        >
-                    </div>
-
-                    <!-- Photo 3 -->
-                    <div class="gallery-item">
-                        <img
-                            src="YOUR_CLOUDINARY_URL_HERE"
-                            alt="ASA Community Event"
-                            loading="lazy"
-                        >
-                    </div>
-
-                    <!-- Photo 4 -->
-                    <div class="gallery-item">
-                        <img
-                            src="YOUR_CLOUDINARY_URL_HERE"
-                            alt="ASA Gala"
-                            loading="lazy"
-                        >
-                    </div>
-
-                    <!-- Photo 5 -->
-                    <div class="gallery-item">
-                        <img
-                            src="YOUR_CLOUDINARY_URL_HERE"
-                            alt="ASA Charity Event"
-                            loading="lazy"
-                        >
-                    </div>
-
-                    <!-- Photo 6 -->
-                    <div class="gallery-item">
-                        <img
-                            src="YOUR_CLOUDINARY_URL_HERE"
-                            alt="ASA Event"
-                            loading="lazy"
-                        >
-                    </div>
-
-                    <!-- Photo 6 -->
-                    <div class="gallery-item">
-                        <img
-                            src="YOUR_CLOUDINARY_URL_HERE"
-                            alt="ASA Event"
-                            loading="lazy"
-                        >
-                    </div>
-
-                    <!-- Photo 6 -->
-                    <div class="gallery-item">
-                        <img
-                            src="YOUR_CLOUDINARY_URL_HERE"
-                            alt="ASA Event"
-                            loading="lazy"
-                        >
-                    </div>
-
-                    <!-- Photo 6 -->
-                    <div class="gallery-item">
-                        <img
-                            src="YOUR_CLOUDINARY_URL_HERE"
-                            alt="ASA Event"
-                            loading="lazy"
-                        >
-                    </div>
-
-                </div>
-            </div>
-
-            <button class="gallery-arrow gallery-next" id="galleryNext" aria-label="Next photos">
-                &#10095;
-            </button>
-
-        </div>
-
-        <!-- Dots -->
-        <div class="gallery-dots" id="galleryDots"></div>
-
-    </section>
-
-
-    <!-- Gallery Lightbox -->
-    <div class="gallery-lightbox" id="galleryLightbox">
-
-        <button class="lightbox-close" id="lightboxClose" aria-label="Close">
-            &times;
-        </button>
-
-        <button class="lightbox-arrow lightbox-prev" id="lightboxPrev">
-            &#10094;
-        </button>
-
-        <img id="lightboxImage" src="" alt="">
-
-        <button class="lightbox-arrow lightbox-next" id="lightboxNext">
-            &#10095;
-        </button>
-        
-    </div>
 
 
     <!-- About Section -->
@@ -545,8 +496,7 @@
         <h2>Ready to Join ASA?</h2>
         <p>Be part of a vibrant community celebrating Arab culture and building meaningful connections at Western University.</p>
         <div class="cta-buttons-footer">
-            <button class="btn btn-primary">Join Now</button>
-            <!-- <button class="btn btn-secondary">Contact Us</button> -->
+            <button class="btn btn-primary" onclick="window.open('https://campus.hellorubric.com/?tab=memberships&s=15993')">Join Now</button>
         </div>
     </section>
 
@@ -557,10 +507,10 @@
                 <h4>About ASA</h4>
                 <p>The Arab Students' Association at Western University is dedicated to celebrating Arab culture and building community.</p>
                 <div class="social-links">
-                    <a href="" title="Facebook">📘</a>
+                    <a href="https://www.facebook.com/asaatwestern/" title="Facebook">📘</a>
                     <a href="https://www.instagram.com/asaatwestern" title="Instagram">📷</a>
-                    <a href="#" title="Twitter">🐦</a>
-                    <a href="#" title="Discord">💬</a>
+                    <a href="#" title="Snapchat">👻</a>
+                    <a href="#" title="LinkedIn">💼</a>
                 </div>
             </div>
             <!-- <div class="footer-section">
