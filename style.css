@@ -163,6 +163,12 @@ nav {
     line-height: 1.8;
 }
 
+@media (max-width: 425px) {
+    .hero p {
+        font-size: 1.1rem;
+    }
+}
+
 .cta-buttons {
     display: flex;
     gap: 2rem;
@@ -499,9 +505,12 @@ section {
 }
 
 .events-container {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 2.5rem;
+    --event-cols: 3;
+    --event-gap: 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--event-gap);
     margin: 3rem auto 0;
     padding: 0 2rem;
     max-width: 1600px;
@@ -512,6 +521,9 @@ section {
 }
 
 .event-card {
+    /* Same width as one grid column, so a short last row stays centered */
+    flex: 0 0 calc((100% - (var(--event-cols) - 1) * var(--event-gap)) / var(--event-cols));
+    max-width: 360px;
     min-width: 0;
     background: white;
     border-radius: 12px;
@@ -528,7 +540,7 @@ section {
 
 .event-image {
     width: 100%;
-    height: 220px;
+    aspect-ratio: 4 / 5;
     overflow: hidden;
 }
 
@@ -566,7 +578,8 @@ section {
     line-height: 1.7;
 }
 
-.event-btn {
+.event-btn,
+.event-link-btn {
     background: var(--primary-purple);
     color: white;
     padding: 10px 25px;
@@ -577,7 +590,14 @@ section {
     font-weight: 600;
 }
 
-.event-btn:hover {
+/* Link styled as an event button (not caught by the .event-btn script) */
+.event-link-btn {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.event-btn:hover,
+.event-link-btn:hover {
     background: var(--primary-dark);
     transform: translateX(5px);
 }
@@ -591,22 +611,18 @@ section {
 /* Tablet */
 @media (max-width: 999px) {
     .events-container {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        --event-cols: 2;
+        --event-gap: 1.5rem;
         padding: 0 1.5rem;
-        gap: 1.5rem;
     }
 }
 
 /* Mobile */
 @media (max-width: 600px) {
     .events-container {
-        grid-template-columns: 1fr;
+        --event-cols: 1;
+        --event-gap: 1.5rem;
         padding: 0 1rem;
-        gap: 1.5rem;
-    }
-
-    .event-image {
-        height: 200px;
     }
 
     .event-content {
@@ -1553,6 +1569,27 @@ footer {
 }
 
 /* ==================== ANIMATIONS ==================== */
+
+/* Scroll reveal: script.js adds .reveal to each section, then .revealed when it scrolls into view */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.revealed {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
 @keyframes slideInUp {
     from {
         opacity: 0;

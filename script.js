@@ -28,22 +28,22 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 });
 
 // ==================== SCROLL ANIMATIONS ==================== //
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
-
-const observer = new IntersectionObserver(function(entries) {
+// Every section (except the hero, which animates on load) fades up into view once
+const revealObserver = new IntersectionObserver(function(entries) {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.style.animation = 'slideInUp 0.6s ease';
+            entry.target.classList.add('revealed');
+            revealObserver.unobserve(entry.target);
         }
     });
-}, observerOptions);
+}, {
+    threshold: 0,
+    rootMargin: '0px 0px -10% 0px'
+});
 
-// Observe animation elements
-document.querySelectorAll('.feature-card, .event-card, .stat-card, .team-card').forEach(el => {
-    observer.observe(el);
+document.querySelectorAll('section:not(.hero), .leadership-section').forEach(el => {
+    el.classList.add('reveal');
+    revealObserver.observe(el);
 });
 
 // ==================== BUTTON INTERACTIONS ==================== //
