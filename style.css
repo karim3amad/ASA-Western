@@ -115,7 +115,7 @@ nav {
 /* ==================== HERO SECTION ==================== */
 .hero {
     background: linear-gradient(135deg, rgba(26, 26, 62, 0.65) 0%, rgba(107, 76, 154, 0.65) 100%),
-                url('images/banner-image.webp') center/cover no-repeat;
+                url('images/banner.webp') center/cover no-repeat;
     min-height: 100vh;
     display: flex;
     align-items: center;
