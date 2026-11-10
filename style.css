@@ -21,7 +21,6 @@ body {
     overflow-x: hidden;
 }
 
-/* ==================== NAVIGATION ==================== */
 nav {
     background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-purple) 100%);
     padding: 1rem 5%;
@@ -34,7 +33,6 @@ nav {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* No focus outline or tap flash on mouse/touch clicks; keyboard users still get one */
 nav a,
 nav button {
     -webkit-tap-highlight-color: transparent;
@@ -123,7 +121,6 @@ nav button:focus:not(:focus-visible) {
     cursor: pointer;
 }
 
-/* ==================== HERO SECTION ==================== */
 .hero {
     background: linear-gradient(135deg, rgba(26, 26, 62, 0.65) 0%, rgba(107, 76, 154, 0.65) 100%),
                 url('images/banner.webp') center/cover no-repeat;
@@ -187,7 +184,6 @@ nav button:focus:not(:focus-visible) {
     flex-wrap: wrap;
 }
 
-/* ==================== BUTTONS ==================== */
 .btn {
     padding: 20px 60px;
     border: none;
@@ -225,7 +221,6 @@ nav button:focus:not(:focus-visible) {
     transform: translateY(-3px);
 }
 
-/* ==================== SECTION STYLES ==================== */
 section {
     padding: 5rem 5%;
 }
@@ -267,8 +262,6 @@ section {
     margin-top: 2rem;
 }
 
-/* ==================== FEATURES SECTION ==================== */
-
 .features-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -285,7 +278,6 @@ section {
     align-items: center;
     justify-content: center;
 
-
     box-shadow: 0 5px 20px rgba(0,0,0,0.12);
 
     transition:
@@ -298,7 +290,6 @@ section {
     box-shadow: 0 20px 50px rgba(107, 76, 154, 0.25);
 }
 
-/* Individual Card Images */
 .cultural-card {
     background-image:
         linear-gradient(
@@ -335,7 +326,6 @@ section {
         url('images/global.JPG');
 }
 
-/* Text Overlay */
 .feature-overlay {
     width: 100%;
     padding: 2rem;
@@ -357,8 +347,6 @@ section {
 
 }
 
-/* ==================== SPONSORS SECTION ==================== */
-
 .sponsors-section {
     background: var(--primary-purple);
     padding: 1rem 0;
@@ -371,7 +359,7 @@ section {
 
 .sponsors-section .section-subtitle {
     color: rgba(255, 255, 255, 0.85);
-    /* padding: -50px -50px; */
+
 }
 
 .sponsors-slider {
@@ -392,8 +380,6 @@ section {
     width: max-content;
     animation: scrollSponsors 30s linear infinite;
 }
-
-/* Circular logo cards */
 
 .sponsor-logo {
     width: 180px;
@@ -430,8 +416,6 @@ section {
     display: block;
 }
 
-/* Infinite scrolling */
-
 @keyframes scrollSponsors {
 
     from {
@@ -443,8 +427,6 @@ section {
     }
 
 }
-
-/* ==================== TABLET ==================== */
 
 @media (max-width: 992px) {
 
@@ -463,16 +445,13 @@ section {
 
 }
 
-/* ==================== MOBILE ==================== */
-
 @media (max-width: 768px) {
 
     .sponsors-section {
         padding: 5rem 0;
-        /* height: 400px; */
+
         margin-bottom: -50px;
     }
-
 
     .sponsors-track {
         gap: 2rem;
@@ -483,11 +462,7 @@ section {
         height: 150px;
     }
 
-
-
 }
-
-/* ==================== SMALL PHONES ==================== */
 
 @media (max-width: 480px) {
 
@@ -506,10 +481,6 @@ section {
     }
 
 }
-
-
-
-/* ==================== EVENTS SECTION ==================== */
 
 .events-section {
     background: linear-gradient(135deg, #f9f9f9 0%, #f0f0f0 100%);
@@ -532,7 +503,7 @@ section {
 }
 
 .event-card {
-    /* Same width as one grid column, so a short last row stays centered */
+
     flex: 0 0 calc((100% - (var(--event-cols) - 1) * var(--event-gap)) / var(--event-cols));
     max-width: 420px;
     min-width: 0;
@@ -602,7 +573,6 @@ section {
     font-weight: 600;
 }
 
-/* Link styled as an event button (not caught by the .event-btn script) */
 .event-link-btn {
     display: inline-block;
     text-decoration: none;
@@ -620,7 +590,6 @@ section {
     margin-top: 3rem;
 }
 
-/* Tablet */
 @media (max-width: 999px) {
     .events-container {
         --event-cols: 2;
@@ -629,7 +598,6 @@ section {
     }
 }
 
-/* Mobile */
 @media (max-width: 600px) {
     .events-container {
         --event-cols: 1;
@@ -642,8 +610,6 @@ section {
     }
 }
 
-
-/* ==================== CHARITY SECTION ==================== */
 .charity-section {
     align-items: center;
     background: white;
@@ -746,7 +712,6 @@ section {
     filter: brightness(0.7);
 }
 
-/* Community campaigns callout */
 .campaign-callout {
     display: flex;
     align-items: center;
@@ -774,7 +739,6 @@ section {
     margin: 0;
 }
 
-/* Looks come from .charity-btn (same as Donate Now); this only handles placement in the callout */
 .campaign-callout-btn {
     flex-shrink: 0;
     margin-top: 0;
@@ -787,7 +751,6 @@ section {
         padding: 2rem 1.5rem;
     }
 
-    /* Center both charity buttons the same way the site's other mobile buttons are */
     .charity-btn {
         display: block;
     }
@@ -845,7 +808,6 @@ section {
     font-weight: 600;
 }
 
-/* Center the last 2 boxes */
 @media (min-width: 769px) {
 
     .team-grid > :nth-last-child(2) {
@@ -858,15 +820,6 @@ section {
 
 }
 
-
-/* 
-@media (max-width: 1800px) {
-    .charity-grid {
-        padding: 0 100px;
-    }
-} */
-
-/* Responsive */
 @media (max-width: 768px) {
     .charity-grid {
         grid-template-columns: 1fr;
@@ -896,7 +849,6 @@ section {
     .about-content p {
         font-size: 1.1rem;
     }
-    
 
 }
 
@@ -910,12 +862,6 @@ section {
     }
 }
 
-
-
-/* =========================
-   GALLERY
-========================= */
-
 .gallery-section {
     position: relative;
     padding: 85px 0 80px;
@@ -924,11 +870,6 @@ section {
 
     overflow: hidden;
 }
-
-
-/* =========================
-   TITLE
-========================= */
 
 .gallery-section .section-title {
     position: relative;
@@ -948,11 +889,6 @@ section {
     margin-bottom: 50px;
 }
 
-
-/* =========================
-   MARQUEE
-========================= */
-
 .gallery-marquee {
     width: 100%;
 
@@ -960,9 +896,6 @@ section {
 
     position: relative;
 }
-
-
-/* Moving track */
 
 .gallery-track {
     display: flex;
@@ -974,15 +907,9 @@ section {
     will-change: transform;
 }
 
-
-/* Pause while a photo is open in the lightbox */
-
 body.lightbox-open .gallery-track {
     animation-play-state: paused;
 }
-
-
-/* Each identical group */
 
 .gallery-group {
     display: flex;
@@ -993,11 +920,6 @@ body.lightbox-open .gallery-track {
 
     flex-shrink: 0;
 }
-
-
-/* =========================
-   GALLERY CARDS
-========================= */
 
 .gallery-item {
     position: relative;
@@ -1018,9 +940,6 @@ body.lightbox-open .gallery-track {
         0 3px 7px rgba(26, 26, 62, 0.05);
 }
 
-
-/* Images */
-
 .gallery-item img {
     display: block;
 
@@ -1034,11 +953,6 @@ body.lightbox-open .gallery-track {
     transition: transform 0.4s ease;
 }
 
-
-/* =========================
-   HOVER
-========================= */
-
 @media (hover: hover) and (pointer: fine) {
 
     .gallery-item:hover img {
@@ -1046,11 +960,6 @@ body.lightbox-open .gallery-track {
     }
 
 }
-
-
-/* =========================
-   INFINITE ANIMATION
-========================= */
 
 @keyframes gallery-scroll {
 
@@ -1064,11 +973,6 @@ body.lightbox-open .gallery-track {
 
 }
 
-
-/* =========================
-   TABLET
-========================= */
-
 @media (max-width: 1100px) {
 
     .gallery-item {
@@ -1077,11 +981,6 @@ body.lightbox-open .gallery-track {
     }
 
 }
-
-
-/* =========================
-   MOBILE
-========================= */
 
 @media (max-width: 700px) {
 
@@ -1109,11 +1008,6 @@ body.lightbox-open .gallery-track {
 
 }
 
-
-/* =========================
-   SMALL PHONES
-========================= */
-
 @media (max-width: 425px) {
 
     .gallery-item {
@@ -1122,10 +1016,6 @@ body.lightbox-open .gallery-track {
     }
 
 }
-
-/* =========================
-   VIEW ALL PHOTOS BUTTON
-========================= */
 
 .gallery-cta {
     display: flex;
@@ -1175,10 +1065,6 @@ body.lightbox-open .gallery-track {
     }
 }
 
-/* =========================
-   GALLERY LIGHTBOX
-========================= */
-
 .gallery-lightbox {
     position: fixed;
     inset: 0;
@@ -1206,9 +1092,6 @@ body.lightbox-open .gallery-track {
     visibility: visible;
 }
 
-
-/* Large image */
-
 .gallery-lightbox img {
     max-width: 92vw;
     max-height: 90vh;
@@ -1223,9 +1106,6 @@ body.lightbox-open .gallery-track {
     box-shadow:
         0 20px 60px rgba(0, 0, 0, 0.5);
 }
-
-
-/* Close button */
 
 .lightbox-close {
     position: absolute;
@@ -1259,21 +1139,14 @@ body.lightbox-open .gallery-track {
     background: rgba(255, 255, 255, 0.3);
 }
 
-
-/* Make gallery photos clickable */
-
 .gallery-item {
     cursor: pointer;
 }
 
-
-
-/* ==================== ABOUT SECTION ==================== */
 .about-section {
     background: white;
-    /* padding: 0 300px */
-}
 
+}
 
 .about-grid {
     display: grid;
@@ -1301,8 +1174,6 @@ body.lightbox-open .gallery-track {
 .about-content {
     order: 2
 }
-
-
 
 .about-content h3 {
     color: var(--primary-purple);
@@ -1401,14 +1272,12 @@ body.lightbox-open .gallery-track {
         font-size: 1.2rem;
     }
 
-
 }
 
 @media (min-width: 1501px) and (max-width: 1900px) {
     .about-content {
         padding-left: 50px;
     }
-
 
 }
 
@@ -1420,8 +1289,6 @@ body.lightbox-open .gallery-track {
     box-sizing: border-box;
 }
 
-
-/* ==================== LEADERSHIP SECTION ==================== */
 .leadership-section {
     margin-top: 5rem;
 }
@@ -1477,13 +1344,10 @@ body.lightbox-open .gallery-track {
     z-index: 0;
 }
 
-
 .team-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(107, 76, 154, 0.15);
 }
-
-
 
 .team-card h4,
 .team-card p {
@@ -1556,15 +1420,6 @@ body.lightbox-open .gallery-track {
     background-position: 20% 50%;
 }
 
-/* @media (max-width: 426px) {
-    .team-jad {
-        background-size: cover;
-    }
-
-} */
-
-
-/* ==================== CTA SECTION ==================== */
 .cta-section {
     background: linear-gradient(135deg, rgba(26, 26, 62, 0.75) 0%, rgba(107, 76, 154, 0.75) 100%),
                 url('images/joinnow.webp') center 25%/cover no-repeat;
@@ -1595,7 +1450,6 @@ body.lightbox-open .gallery-track {
     flex-wrap: wrap;
 }
 
-/* ==================== FOOTER ==================== */
 footer {
     background: var(--primary-dark);
     color: var(--text-light);
@@ -1608,7 +1462,7 @@ footer {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 2rem;
     margin-bottom: 3rem;
-    
+
 }
 
 .footer-section h4 {
@@ -1667,7 +1521,6 @@ footer {
     color: var(--accent-cream);
 }
 
-/* Center the footer on desktop */
 @media (min-width: 769px) {
     .footer-content {
         grid-template-columns: repeat(2, minmax(250px, 400px));
@@ -1676,16 +1529,12 @@ footer {
     }
 }
 
-/* Stack About and Contact on small phones */
 @media (max-width: 525px) {
     .footer-content {
         grid-template-columns: 1fr;
     }
 }
 
-/* ==================== ANIMATIONS ==================== */
-
-/* Scroll reveal: script.js adds .reveal to each section, then .revealed when it scrolls into view */
 .reveal {
     opacity: 0;
     transform: translateY(50px);
@@ -1715,9 +1564,6 @@ footer {
         transform: translateY(0);
     }
 }
-
-/* ==================== RESPONSIVE ==================== */
-
 
 @media (max-width: 768px) {
     .nav-links {
@@ -1752,7 +1598,7 @@ footer {
     .about-image {
         width: 100%;
         height: auto;
-        /* max-height: 450px; */
+
         object-fit: contain;
         border-radius: 12px;
         display: block;
@@ -1822,7 +1668,6 @@ footer {
     }
 }
 
-
 @media (max-width: 425px) {
 
     .team-grid {
@@ -1837,7 +1682,6 @@ footer {
 
     }
 
-
     .team-card h4 {
         margin-bottom: 0.4rem;
         font-size: 0.8rem;
@@ -1848,23 +1692,3 @@ footer {
         font-size: 0.7rem;
     }
 }
-
-
-/* @media (max-width: 480px) {
-
-    .feature-card,
-    .event-card {
-        padding: 1.5rem;
-    }
-
-    .team-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .impact-stats {
-        grid-template-columns: 1fr;
-    }
-
-    .cta-buttons-footer {
-        flex-direction: column;
-    } */
-/* } */

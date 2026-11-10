@@ -1,8 +1,7 @@
-// ==================== SMOOTH SCROLLING ==================== //
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        // Drop focus so the browser's focus outline doesn't linger after a mouse click
+
         this.blur();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
@@ -14,7 +13,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ==================== MOBILE MENU TOGGLE ==================== //
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const navLinks = document.querySelector('.nav-links');
 
@@ -22,15 +20,12 @@ mobileMenuBtn.addEventListener('click', function() {
     navLinks.classList.toggle('active');
 });
 
-// Close mobile menu when a link is clicked
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', function() {
         navLinks.classList.remove('active');
     });
 });
 
-// ==================== SCROLL ANIMATIONS ==================== //
-// Every section (except the hero, which animates on load) fades up into view once
 const revealObserver = new IntersectionObserver(function(entries) {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -48,34 +43,30 @@ document.querySelectorAll('section:not(.hero), .leadership-section').forEach(el 
     revealObserver.observe(el);
 });
 
-// ==================== BUTTON INTERACTIONS ==================== //
 const buttons = document.querySelectorAll('.btn');
 
 buttons.forEach(button => {
     button.addEventListener('click', function(e) {
-        // Add ripple effect
+
         const ripple = document.createElement('span');
         ripple.classList.add('ripple');
-        
+
         const rect = this.getBoundingClientRect();
         const size = Math.max(rect.width, rect.height);
         const x = e.clientX - rect.left - size / 2;
         const y = e.clientY - rect.top - size / 2;
-        
+
         ripple.style.width = ripple.style.height = size + 'px';
         ripple.style.left = x + 'px';
         ripple.style.top = y + 'px';
-        
+
         this.appendChild(ripple);
-        
-        // Remove ripple after animation
+
         setTimeout(() => {
             ripple.remove();
         }, 600);
     });
 });
-
-// ==================== GALLERY LIGHTBOX ==================== //
 
 const asaLightboxItems = document.querySelectorAll('.gallery-item');
 const asaLightbox = document.getElementById('galleryLightbox');
@@ -84,7 +75,6 @@ const asaLightboxClose = document.getElementById('lightboxClose');
 
 if (asaLightbox && asaLightboxImage && asaLightboxClose) {
 
-    // Open lightbox
     asaLightboxItems.forEach(item => {
 
         const image = item.querySelector('img');
@@ -93,7 +83,6 @@ if (asaLightbox && asaLightboxImage && asaLightboxClose) {
 
         item.addEventListener('click', (event) => {
 
-            // Prevent any other click behavior
             event.preventDefault();
             event.stopPropagation();
 
@@ -102,7 +91,6 @@ if (asaLightbox && asaLightboxImage && asaLightboxClose) {
 
             asaLightbox.classList.add('active');
 
-            // Lock the page and pause the gallery
             document.body.classList.add('lightbox-open');
             document.body.style.overflow = 'hidden';
 
@@ -110,8 +98,6 @@ if (asaLightbox && asaLightboxImage && asaLightboxClose) {
 
     });
 
-
-    // Close lightbox function
     function closeAsaLightbox() {
 
         asaLightbox.classList.remove('active');
@@ -119,15 +105,12 @@ if (asaLightbox && asaLightboxImage && asaLightboxClose) {
         document.body.classList.remove('lightbox-open');
         document.body.style.overflow = '';
 
-        // Clear image after closing
         setTimeout(() => {
             asaLightboxImage.src = '';
         }, 300);
 
     }
 
-
-    // Close button
     asaLightboxClose.addEventListener('click', (event) => {
 
         event.preventDefault();
@@ -137,8 +120,6 @@ if (asaLightbox && asaLightboxImage && asaLightboxClose) {
 
     });
 
-
-    // Close when clicking the dark background
     asaLightbox.addEventListener('click', (event) => {
 
         if (event.target === asaLightbox) {
@@ -147,8 +128,6 @@ if (asaLightbox && asaLightboxImage && asaLightboxClose) {
 
     });
 
-
-    // Escape key
     document.addEventListener('keydown', (event) => {
 
         if (event.key === 'Escape' && asaLightbox.classList.contains('active')) {
@@ -159,27 +138,20 @@ if (asaLightbox && asaLightboxImage && asaLightboxClose) {
 
 }
 
-
-
-// ==================== EVENT BUTTON HANDLERS ==================== //
 document.querySelectorAll('.event-btn').forEach(btn => {
     btn.addEventListener('click', function(e) {
         e.preventDefault();
         const eventCard = this.closest('.event-card');
         const eventTitle = eventCard.querySelector('h3').textContent;
         const eventDate = eventCard.querySelector('.event-date').textContent;
-        
+
         console.log(`Event clicked: ${eventTitle} on ${eventDate}`);
         alert(`You've clicked on: ${eventTitle}\n${eventDate}`);
     });
 });
 
-
-
-// ==================== ACTIVE NAV LINK ==================== //
 const navLinksAll = document.querySelectorAll('.nav-links a');
 
-// Each menu link paired with the element it points to (sections, or the footer's #contact)
 const navTargets = Array.from(navLinksAll)
     .map(link => ({ link, target: document.querySelector(link.getAttribute('href')) }))
     .filter(item => item.target);
@@ -194,8 +166,6 @@ function updateActiveNavLink() {
         }
     });
 
-    // The last target (Contact, in the footer) can never reach the top of the screen,
-    // so treat hitting the bottom of the page as being on it
     const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
     if (atBottom && navTargets.length) {
         current = navTargets[navTargets.length - 1];
@@ -209,56 +179,52 @@ function updateActiveNavLink() {
 window.addEventListener('scroll', updateActiveNavLink);
 updateActiveNavLink();
 
-// Add CSS for active nav link
 const style = document.createElement('style');
 style.innerHTML = `
     .nav-links a.active {
         color: var(--accent-gold) !important;
     }
-    
+
     .nav-links a.active::after {
         width: 100% !important;
     }
 `;
 document.head.appendChild(style);
 
-// ==================== NAVBAR SCROLL EFFECT ==================== //
 let lastScrollTop = 0;
 const navbar = document.querySelector('nav');
 
 window.addEventListener('scroll', () => {
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
+
     if (scrollTop > 100) {
         navbar.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.3)';
     } else {
         navbar.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.2)';
     }
-    
+
     lastScrollTop = scrollTop;
 });
 
-// ==================== FORM SUBMISSION HANDLERS ==================== //
 document.querySelectorAll('.btn-primary').forEach(btn => {
     btn.addEventListener('click', function(e) {
         if (this.textContent.includes('Join')) {
             console.log('Join button clicked');
-            // Handle join functionality
+
         } else if (this.textContent.includes('Learn')) {
             console.log('Learn More button clicked');
-            // Handle learn more functionality
+
         } else if (this.textContent.includes('Donate Now')) {
             console.log('Get Involved button clicked');
-            // Handle get involved functionality
+
             window.location.href = 'https://www.launchgood.com/v4/campaign/asa_western_delivers_aid_and_relief_to_the_families_of_lebanon?src=internal_discover';
         }
     });
 });
 
-// ==================== COUNTER ANIMATION FOR STATS ==================== //
 const animateCounters = () => {
     const statCards = document.querySelectorAll('.stat-card .number');
-    
+
     statCards.forEach(card => {
         const target = parseInt(card.textContent.replace(/\D/g, ''));
         const text = card.textContent.replace(/\d+/g, '');
@@ -276,7 +242,6 @@ const animateCounters = () => {
     });
 };
 
-// Trigger counter animation when stats section is visible
 const statsObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -288,18 +253,17 @@ const statsObserver = new IntersectionObserver(entries => {
 
 document.querySelector('.impact-stats') && statsObserver.observe(document.querySelector('.impact-stats'));
 
-// ==================== FORM VALIDATION (Future use) ==================== //
 function validateForm(formData) {
     const errors = [];
-    
+
     if (!formData.name || formData.name.trim() === '') {
         errors.push('Name is required');
     }
-    
+
     if (!formData.email || !isValidEmail(formData.email)) {
         errors.push('Valid email is required');
     }
-    
+
     return {
         isValid: errors.length === 0,
         errors: errors
@@ -311,15 +275,12 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
-// ==================== ACCESSIBILITY IMPROVEMENTS ==================== //
-// Add keyboard navigation
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         navLinks.classList.remove('active');
     }
 });
 
-// Add focus styles for better accessibility
 const style2 = document.createElement('style');
 style2.innerHTML = `
     button:focus, a:focus {
@@ -329,6 +290,4 @@ style2.innerHTML = `
 `;
 document.head.appendChild(style2);
 
-// ==================== INITIALIZATION ==================== //
 console.log('ASA Website loaded successfully!');
-
