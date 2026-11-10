@@ -2,6 +2,8 @@
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
+        // Drop focus so the browser's focus outline doesn't linger after a mouse click
+        this.blur();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
             target.scrollIntoView({
@@ -177,23 +179,35 @@ document.querySelectorAll('.event-btn').forEach(btn => {
 // ==================== ACTIVE NAV LINK ==================== //
 const navLinksAll = document.querySelectorAll('.nav-links a');
 
-window.addEventListener('scroll', () => {
-    let current = '';
-    
-    document.querySelectorAll('section').forEach(section => {
-        const sectionTop = section.offsetTop;
-        if (scrollY >= sectionTop - 200) {
-            current = section.getAttribute('id');
+// Each menu link paired with the element it points to (sections, or the footer's #contact)
+const navTargets = Array.from(navLinksAll)
+    .map(link => ({ link, target: document.querySelector(link.getAttribute('href')) }))
+    .filter(item => item.target);
+
+function updateActiveNavLink() {
+    let current = null;
+
+    navTargets.forEach(item => {
+        const top = item.target.getBoundingClientRect().top + window.scrollY;
+        if (window.scrollY >= top - 200) {
+            current = item;
         }
     });
-    
+
+    // The last target (Contact, in the footer) can never reach the top of the screen,
+    // so treat hitting the bottom of the page as being on it
+    const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+    if (atBottom && navTargets.length) {
+        current = navTargets[navTargets.length - 1];
+    }
+
     navLinksAll.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').slice(1) === current) {
-            link.classList.add('active');
-        }
+        link.classList.toggle('active', current !== null && link === current.link);
     });
-});
+}
+
+window.addEventListener('scroll', updateActiveNavLink);
+updateActiveNavLink();
 
 // Add CSS for active nav link
 const style = document.createElement('style');

@@ -34,6 +34,17 @@ nav {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* No focus outline or tap flash on mouse/touch clicks; keyboard users still get one */
+nav a,
+nav button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+nav a:focus:not(:focus-visible),
+nav button:focus:not(:focus-visible) {
+    outline: none;
+}
+
 .logo {
     display: flex;
     align-items: center;
@@ -523,7 +534,7 @@ section {
 .event-card {
     /* Same width as one grid column, so a short last row stays centered */
     flex: 0 0 calc((100% - (var(--event-cols) - 1) * var(--event-gap)) / var(--event-cols));
-    max-width: 360px;
+    max-width: 420px;
     min-width: 0;
     background: white;
     border-radius: 12px;
@@ -540,7 +551,7 @@ section {
 
 .event-image {
     width: 100%;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 9 / 10;
     overflow: hidden;
 }
 
@@ -548,6 +559,7 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: top;
     display: block;
 }
 
@@ -732,6 +744,57 @@ section {
 
 .charity-image-link:hover .charity-image {
     filter: brightness(0.7);
+}
+
+/* Community campaigns callout */
+.campaign-callout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+
+    margin-top: 4rem;
+    padding: 2.5rem 3rem;
+
+    background: linear-gradient(135deg, rgba(107, 76, 154, 0.08) 0%, rgba(212, 165, 116, 0.12) 100%);
+    border-left: 6px solid var(--accent-gold);
+    border-radius: 16px;
+}
+
+.campaign-callout-text h3 {
+    color: var(--primary-purple);
+    font-size: 1.6rem;
+    margin-bottom: 0.75rem;
+}
+
+.campaign-callout-text p {
+    color: var(--text-dark);
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Looks come from .charity-btn (same as Donate Now); this only handles placement in the callout */
+.campaign-callout-btn {
+    flex-shrink: 0;
+    margin-top: 0;
+}
+
+@media (max-width: 768px) {
+    .campaign-callout {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem 1.5rem;
+    }
+
+    /* Center both charity buttons the same way the site's other mobile buttons are */
+    .charity-btn {
+        display: block;
+    }
+
+    .campaign-callout-btn {
+        align-self: center;
+    }
 }
 
 .impact-stats {
@@ -1058,6 +1121,58 @@ body.lightbox-open .gallery-track {
         height: 203px;
     }
 
+}
+
+/* =========================
+   VIEW ALL PHOTOS BUTTON
+========================= */
+
+.gallery-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    padding: 0 5%;
+}
+
+.btn-gallery {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+    line-height: 1.2;
+
+    padding: 16px 40px;
+
+    background: var(--primary-purple);
+    color: white;
+
+    box-shadow: 0 8px 25px rgba(107, 76, 154, 0.3);
+}
+
+.btn-gallery svg {
+    transition: transform 0.3s ease;
+}
+
+.btn-gallery:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(107, 76, 154, 0.4);
+}
+
+.btn-gallery:hover svg {
+    transform: translate(3px, -3px);
+}
+
+@media (max-width: 425px) {
+    .gallery-cta {
+        margin-top: 35px;
+    }
+
+    .btn-gallery {
+        padding: 14px 30px;
+        font-size: 1rem;
+    }
 }
 
 /* =========================
