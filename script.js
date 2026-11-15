@@ -43,31 +43,6 @@ document.querySelectorAll('section:not(.hero), .leadership-section').forEach(el 
     revealObserver.observe(el);
 });
 
-const buttons = document.querySelectorAll('.btn');
-
-buttons.forEach(button => {
-    button.addEventListener('click', function(e) {
-
-        const ripple = document.createElement('span');
-        ripple.classList.add('ripple');
-
-        const rect = this.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const x = e.clientX - rect.left - size / 2;
-        const y = e.clientY - rect.top - size / 2;
-
-        ripple.style.width = ripple.style.height = size + 'px';
-        ripple.style.left = x + 'px';
-        ripple.style.top = y + 'px';
-
-        this.appendChild(ripple);
-
-        setTimeout(() => {
-            ripple.remove();
-        }, 600);
-    });
-});
-
 const asaLightboxItems = document.querySelectorAll('.gallery-item');
 const asaLightbox = document.getElementById('galleryLightbox');
 const asaLightboxImage = document.getElementById('lightboxImage');
