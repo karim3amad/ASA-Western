@@ -14,11 +14,18 @@
     --transition: all 0.3s ease;
 }
 
+/* Dark purple behind the page: shows in the iPhone overscroll areas at the top and bottom */
+html {
+    background: var(--primary-dark);
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--text-dark);
     line-height: 1.6;
     overflow-x: hidden;
+    /* Keeps sections without their own background white */
+    background: white;
 }
 
 nav {
