@@ -4,15 +4,6 @@
     box-sizing: border-box;
 }
 
-html {
-    background-color: var(--primary-purple);
-}
-
-body {
-    margin: 0;
-    background-color: var(--primary-purple);
-}
-
 :root {
     --primary-dark: #1a1a3e;
     --primary-purple: #6b4c9a;
@@ -182,7 +173,7 @@ nav button:focus:not(:focus-visible) {
 
 @media (max-width: 425px) {
     .hero p {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 }
 
