@@ -4,6 +4,15 @@
     box-sizing: border-box;
 }
 
+html {
+    background-color: var(--primary-purple);
+}
+
+body {
+    margin: 0;
+    background-color: var(--primary-purple);
+}
+
 :root {
     --primary-dark: #1a1a3e;
     --primary-purple: #6b4c9a;
