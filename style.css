@@ -827,6 +827,23 @@ section {
 
 }
 
+/* Tablet: 4 narrow cards per row, so trim side padding and text size to keep titles on one line */
+@media (min-width: 769px) and (max-width: 1100px) {
+
+    .team-grid .team-card {
+        padding: 2.5rem 0.5rem;
+    }
+
+    .team-grid .team-card h4 {
+        font-size: 0.9rem;
+    }
+
+    .team-grid .team-card p {
+        font-size: 0.85rem;
+    }
+
+}
+
 @media (max-width: 768px) {
     .charity-grid {
         grid-template-columns: 1fr;
@@ -1043,6 +1060,7 @@ body.lightbox-open .gallery-track {
 
     background: var(--primary-purple);
     color: white;
+    border: 3px solid var(--accent-gold);
 
     box-shadow: 0 8px 25px rgba(107, 76, 154, 0.3);
 }
@@ -1573,8 +1591,9 @@ footer {
 }
 
 @media (max-width: 768px) {
+    /* Kept in the layout but hidden so it can fade in and out instead of popping */
     .nav-links {
-        display: none;
+        display: flex;
         position: absolute;
         top: 70px;
         left: 0;
@@ -1583,10 +1602,19 @@ footer {
         background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-purple) 100%);
         padding: 2rem;
         gap: 1rem;
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        pointer-events: none;
+        transition: opacity 0.5s ease, transform 0.3s ease, visibility 0.3s;
     }
 
     .nav-links.active {
-        display: flex;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
     }
 
     .mobile-menu-btn {
@@ -1675,27 +1703,41 @@ footer {
     }
 }
 
-@media (max-width: 425px) {
+/* 480px so large phones (e.g. iPhone Pro Max, ~430-440px wide) get the compact team cards too */
+@media (max-width: 480px) {
 
     .team-grid {
         grid-template-columns: 1;
         gap: 1.2rem;
     }
 
+    /* Shift the photo up so his face sits above the name */
+    .team-shelkani {
+        background-position: 0% 100%;
+    }
+
     .team-card {
         min-height: 230px;
-        padding: 2rem 1.5rem;
+        padding: 2rem 0.5rem;
         grid-template-columns: 1;
 
     }
 
     .team-card h4 {
         margin-bottom: 0.4rem;
-        font-size: 0.8rem;
+        /* Shrinks a little on very narrow phones so long words like "Communications" stay whole */
+        font-size: min(0.8rem, 3.6vw);
 
     }
 
     .team-card p {
         font-size: 0.7rem;
+    }
+}
+
+/* Narrow cards (very small phones, and 4-across tablets) only show a thin slice of Sam's wide photo, so line it up on him */
+@media (min-width: 260px) and (max-width: 403px), (min-width: 769px) and (max-width: 1023px) {
+    .team-sam {
+        background-position: 43% 50%;
     }
 }
